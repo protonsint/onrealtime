@@ -1,6 +1,3 @@
-// Check the configuration file for more details
-var config = require('./config');
-
 /*  Copyright 2012-2016 Sven "underscorediscovery" Bergström
     
     written by : http://underscorediscovery.ca
@@ -12,7 +9,7 @@ var config = require('./config');
 */
 
     var
-        gameport        = config.serverport,
+        gameport        = process.env.OPENSHIFT_NODEJS_PORT || '8080',
 
         io              = require('socket.io'),
         express         = require('express'),
