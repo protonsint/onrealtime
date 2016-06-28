@@ -1,3 +1,6 @@
+// Check the configuration file for more details
+var config = require('./config');
+
 /*  Copyright 2012-2016 Sven "underscorediscovery" Bergström
     
     written by : http://underscorediscovery.ca
@@ -27,8 +30,13 @@
 //and will serve any file the user requests from the root of your web server (where you launch the script from)
 //so keep this in mind - this is not a production script but a development teaching tool.
 
-        //Tell the server to listen for incoming connections
-    server.listen(gameport)
+//Tell the server to listen for incoming connections
+// Both port and ip are needed for the OpenShift, otherwise it tries 
+// to bind server on IP 0.0.0.0 (or something) and fails
+ server.listen(config.serverport, config.serverip, function() {
+  console.log("Server running @ http://" + config.serverip + ":" + config.serverport);
+});/* */
+
 
         //Log something so we know that it succeeded.
     console.log('\t :: Express :: Listening on port ' + gameport );
